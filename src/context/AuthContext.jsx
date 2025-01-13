@@ -25,8 +25,6 @@ const AuthProvider = ({children}) => {
                 navigate('/')
                 setIsLoading(false)
             }
-
-
         } catch (error) {
             console.error('error' , error.message);
             setIsLoading(false)
