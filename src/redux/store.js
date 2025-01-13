@@ -1,9 +1,8 @@
-import { configureStore } from "@reduxjs/toolkit";
-import  Article  from "./reducers/article.reducer";
+import { configureStore } from '@reduxjs/toolkit'
+import Article from './reducers/article.reducer'
 
-
-export default configureStore ({
+export default configureStore({
     reducer: {
-        article:Article
-    }
+        article: Article,
+    },
 })

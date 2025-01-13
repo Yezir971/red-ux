@@ -1,8 +1,7 @@
 const Mathilde = () => {
-    return(
+    return (
         <>
             <p>Route de la zigoroute!</p>
-        
         </>
     )
 }
