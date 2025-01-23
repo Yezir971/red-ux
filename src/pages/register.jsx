@@ -28,7 +28,7 @@ const Register = () => {
     }
     return (
         <>
-            <h1 className='text-4xl font-bold text-red-800 text-center'>Register</h1>
+            <h1 className='text-4xl font-bold text-red-800 text-center'>Inscription</h1>
             <div className='my-24 h-screen mx-auto '>
                 <form className="bg-slate-300 rounded-2xl p-8 max-w-md mx-auto" onSubmit={handleSubmit}>
                     <div className="relative z-0 w-full mb-5 group">
@@ -98,12 +98,12 @@ const Register = () => {
                     </div>
                     <button
                         type="submit"
-                        className="text-white bg-blue-800 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+                        className="text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
                     >
-                        Registration
+                        S'inscrire
                     </button>
                     <div className="my-3">
-                        <Link to="/sign">Already registered ?</Link>
+                        <Link to="/sign">Déjà inscrit ?</Link>
                     </div>
                     <p>{messageE}</p>
                 </form>
