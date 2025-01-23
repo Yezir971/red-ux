@@ -7,7 +7,7 @@ import Detail from './pages/details'
 import AddArticle from './pages/addArticle'
 import Update from './pages/update'
 import Register from './pages/register'
-import Signup from './components/sign'
+import Signup from './pages/sign'
 import Verify from './pages/verify'
 function App() {
     return (
