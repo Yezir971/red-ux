@@ -14,7 +14,6 @@ const Verify = () => {
 
                 })
                 let data = response.json()
-                console.log(token)
                 setMessage('inscription réussie !')
                 setLoader(false)
             } catch (error) {

@@ -5,7 +5,6 @@ const SearchBar = () => {
 
     const open = () => {
         setToggle(!toggle)
-        console.log(toggle)
     }
     return (
         <>

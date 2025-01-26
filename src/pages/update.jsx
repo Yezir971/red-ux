@@ -11,7 +11,7 @@ const Update = () => {
         category: '',
         brand: '',
         price: 0,
-        img: [],
+        picture: [],
         status: true,
         stock: 0,
     })
@@ -21,7 +21,7 @@ const Update = () => {
                 const response = await fetch(
                     `http://localhost:8000/api/article/get/${id}`
                 )
-                const data = response.json()
+                const data = await response.json()
                 setArticle(data)
             } catch (error) {
                 console.error(error.message)
@@ -59,6 +59,12 @@ const Update = () => {
                 `http://localhost:8000/api/article/update/${id}`,
                 {
                     method: 'PUT',
+                    headers:{
+                        "Content-Type":"application/json",
+                    },
+                    // permet d'inclure les token dans la requete 
+                    credentials: 'include', 
+                    body: JSON.stringify(article)
                 }
             )
             if (response.status === 200) {

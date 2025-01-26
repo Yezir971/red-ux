@@ -1,15 +1,30 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 
 const Register = () => {
+    // on récupère l'info si l'utilisateur est log ou non
+    const {auth} = useContext(AuthContext)
+    // const isLog = useSelector((state) => state.user.log)
+    const navigate = useNavigate()
+    // si l'utilisateur est log on le redirige vers la page d'accueil
+    useEffect(() => {
+        if (auth) {
+            navigate('/')
+        }
+    }, [])
+
+
     const [messageE, setMessageE] = useState('')
     const [user, setUser] = useState({
         isActive: true,
     })
+
     const handleChange = (event) => {
         const { name, value } = event.target
         setUser((user) => ({ ...user, [name]: value }))
     }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
@@ -23,14 +38,19 @@ const Register = () => {
             setMessageE("Un mail d'inscription à été envoyer !")
         } catch (error) {
             console.error('Error', e.message)
-            setMessageE(`Un problème à été détecter ! message : ${e.message}` )
+            setMessageE(`Un problème à été détecter ! message : ${e.message}`)
         }
     }
     return (
         <>
-            <h1 className='text-4xl font-bold text-red-800 text-center'>Inscription</h1>
-            <div className='my-24 h-screen mx-auto '>
-                <form className="bg-slate-300 rounded-2xl p-8 max-w-md mx-auto" onSubmit={handleSubmit}>
+            <h1 className="text-4xl font-bold text-red-800 text-center">
+                Inscription
+            </h1>
+            <div className="my-24 h-full mx-auto ">
+                <form
+                    className="bg-slate-300 rounded-2xl p-8 max-w-md mx-auto"
+                    onSubmit={handleSubmit}
+                >
                     <div className="relative z-0 w-full mb-5 group">
                         <input
                             type="text"
@@ -52,6 +72,7 @@ const Register = () => {
                         <input
                             type="text"
                             name="email"
+                            onChange={handleChange}
                             id="floating_email"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "

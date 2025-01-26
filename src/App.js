@@ -9,6 +9,13 @@ import Update from './pages/update'
 import Register from './pages/register'
 import Signup from './pages/sign'
 import Verify from './pages/verify'
+import Dashboard from './pages/dashboard'
+import Footer from './components/footer'
+import DetailsUser from './pages/DetailsUser'
+import UpdateUser from './pages/UpdateUser'
+import DetailUsersNav from './pages/DetailsUserNav'
+import UpdateUserNav from './pages/UpdateUserNav'
+import Article from './pages/Article'
 function App() {
     return (
         <div className="App">
@@ -17,13 +24,24 @@ function App() {
                 <Route path="/mathilde" element={<Mathilde />} />
                 <Route path="/james" element={<James />} />
                 <Route path="/article/add" element={<AddArticle />} />
-                <Route path="/detail/:id" element={<Detail />} />
+                <Route path="/detail-article/:id" element={<Detail />} />
                 <Route path="/update/:id" element={<Update />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/signup" element={<Signup />} />
                 <Route path="/verify/:token" element={<Verify />} />
+                <Route path="/detail-user-nav/:id" element={<DetailUsersNav />} />
+                <Route path="/update-user-nav/:id" element={<UpdateUserNav />} />
+                <Route path='/article/:type' element={<Article />} />
+
+                {/* dashboard   */}
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/dashboard-detail-user/:id" element={<DetailsUser />} />
+                <Route path="/dashboard-update-user/:id" element={<UpdateUser />} />
+                {/* dashboard   */}
+
                 <Route path="/" element={<Home />} />
             </Routes>
+            <Footer />
         </div>
     )
 }

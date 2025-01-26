@@ -18,20 +18,14 @@ export const Article = createSlice({
         },
         FETCH_ARTICLE_DETAIL: (store, actions) => {
             store.loading = false
-            console.log(store.data)
-            console.log("store.data avant le filtre:", store.data);
-            console.log("actions.payload:", actions.payload);
-            
             store.data = store.data.filter(article => article.id == actions.payload )
-
-            console.log("payload");
-            console.log(actions.payload)
-            console.log(store.data)
-            console.log("payload");
-            
+        },
+        FETCH_ARTICLE_CATEGORY: (store, actions) => {
+            store.loading = false
+            store.data = store.data.filter(article => article.category == actions.payload )
         }
     }
 })
 
-export const {FETCH_ARTICLE_START, FETCH_ARTICLE_SUCCESS, FETCH_ARTICLE_DETAIL} = Article.actions
+export const {FETCH_ARTICLE_START, FETCH_ARTICLE_SUCCESS, FETCH_ARTICLE_DETAIL, FETCH_ARTICLE_CATEGORY} = Article.actions
 export default Article.reducer

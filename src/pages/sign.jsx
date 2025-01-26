@@ -4,21 +4,39 @@ import { AuthContext } from '../context/AuthContext'
 
 const Signup = () => {
     const [user, setUser] = useState({})
-    const { login } = useContext(AuthContext)
+    const { login, auth, message, setMessage, idUser } = useContext(AuthContext)
+
     const handleChange = (event) => {
         const { name, value } = event.target
         setUser((prevUser) => ({ ...prevUser, [name]: value }))
     }
     const handleSubmit = (event) => {
         event.preventDefault()
+        
         login(user)
+    }
+    const activate = async (id) => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/user/reactivate/${id}`, {
+                method: "PUT", 
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                credentials:'include',
+            })
+            const data = await response.json()
+            setMessage("Votre compte est à nouveau activer !")
+            return data
+        } catch (error) {
+            console.error(error.massage)            
+        }
     }
     return (
         <>
             <h1 className="text-4xl font-bold text-red-800 text-center">
                 Connexion
             </h1>
-            <div className="my-24 h-screen mx-auto ">
+            <div className="my-24 h-full mx-auto ">
                 <form
                     className="bg-slate-300 rounded-2xl p-8 max-w-md mx-auto"
                     onSubmit={handleSubmit}
@@ -27,6 +45,7 @@ const Signup = () => {
                         <input
                             type="text"
                             name="email"
+                            onChange={handleChange}
                             id="floating_email"
                             className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2  dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                             placeholder=" "
@@ -66,6 +85,14 @@ const Signup = () => {
                     <div className="my-3">
                         <Link to="/register">Vous n'avez pas de compte ?</Link>
                     </div>
+                    <p className='text-center text-yellow-600'>{ message}</p>
+                    {
+                        message === "Votre compte n'est plus activé cliquer sur le lien suivant pour l'activer à nouveau !" && (
+                            <>
+                                <p className='cursor-pointer' onClick={() => activate(idUser)}>le lien</p>
+                            </>
+                        )
+                    }
                 </form>
             </div>
         </>
