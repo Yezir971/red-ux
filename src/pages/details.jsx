@@ -12,6 +12,7 @@ const Detail = () => {
     const navigate = useNavigate()
     const store = useSelector((state) => state.article.data)
     const dispatch = useDispatch()
+    const storeUser = useSelector((state) => state.user.data)
 
     const deleteArticle = async () => {
         try {
@@ -33,6 +34,8 @@ const Detail = () => {
             console.error('Error lors de la suppression: ', error)
         }
     }
+    console.log(storeUser);
+    
     useEffect(() => {
         const fetchArticle = async () => {
             dispatch(ACTIONS.FETCH_ARTICLE_START())
@@ -130,6 +133,9 @@ const Detail = () => {
                         <span class="text-3xl font-bold text-gray-900 dark:text-white">
                             {article.price} €
                         </span>
+                        {
+
+                        }
                         <div>
                             <Link
                                 class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"

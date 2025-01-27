@@ -16,6 +16,7 @@ import UpdateUser from './pages/UpdateUser'
 import DetailUsersNav from './pages/DetailsUserNav'
 import UpdateUserNav from './pages/UpdateUserNav'
 import Article from './pages/Article'
+import DetailArticle from './pages/DetailArticle'
 function App() {
     return (
         <div className="App">
@@ -32,7 +33,7 @@ function App() {
                 <Route path="/detail-user-nav/:id" element={<DetailUsersNav />} />
                 <Route path="/update-user-nav/:id" element={<UpdateUserNav />} />
                 <Route path='/article/:type' element={<Article />} />
-
+                <Route path='/DetailArticle/:id' element={<DetailArticle />} />
                 {/* dashboard   */}
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/dashboard-detail-user/:id" element={<DetailsUser />} />
